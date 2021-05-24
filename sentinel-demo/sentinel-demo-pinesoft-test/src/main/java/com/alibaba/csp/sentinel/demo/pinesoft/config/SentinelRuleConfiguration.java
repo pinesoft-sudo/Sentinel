@@ -22,16 +22,16 @@ public class SentinelRuleConfiguration {
         initFlowRule("test1");
 
         //熔断降级规则
-        initDegradeRule("test2");
+        //initDegradeRule("test2");
 
         //熔断降级规则
         initDegradeRule("test3");
 
 
         //熔断降级规则
-        initFlowRule("test4");
+        //initFlowRule("test4");
         //熔断降级规则
-        initDegradeRule("test4");
+        //initDegradeRule("test4");
     }
 
     /**
@@ -60,7 +60,7 @@ public class SentinelRuleConfiguration {
         qpsRule.setClusterMode(false); //是否集群限流。默认为false
         qpsRule.setControlBehavior(RuleConstant.CONTROL_BEHAVIOR_DEFAULT);
         //qpsRule.setControlBehavior(RuleConstant.CONTROL_BEHAVIOR_RATE_LIMITER);
-        //qpsRule.setMaxQueueingTimeMs(20 * 1000);//这里设置的等待处理时间让系统能平稳的处理所有的请求.表示每一个请求的最长等待时间5s
+        //qpsRule.setMaxQueueingTimeMs(20 * 1000);//这里设置的等待处理时间让系统能平稳的处理所有的请求.表示每一个请求的最长等待时间20s
         rules.add(qpsRule);
 
         //并发线程数控制模式,并发数控制用于保护业务线程池不被慢调用耗尽

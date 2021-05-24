@@ -118,7 +118,7 @@ public class SentinelTestService {
      * @return String
      */
     public void fallbackMethod(String value, Throwable ex) {
-        log.error("fallback异常:{},value:{}", ex.getMessage(), value);
+        log.error("业务异常或被降级:{},value:{}", ex.getMessage(), value);
     }
 
     /**
