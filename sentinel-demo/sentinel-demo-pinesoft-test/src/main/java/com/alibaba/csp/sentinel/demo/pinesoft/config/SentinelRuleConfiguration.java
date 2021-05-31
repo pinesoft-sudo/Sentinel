@@ -124,7 +124,7 @@ public class SentinelRuleConfiguration {
         ecrule.setCount(2);   //异常数阈值
         ecrule.setTimeWindow(5);  //熔断时长，单位为 s
         ecrule.setMinRequestAmount(1); //熔断触发的最小请求数
-        ecrule.setStatIntervalMs(1000*60); //单位统计时长
+        ecrule.setRtSlowRequestAmount(1000*60); //单位统计时长
         rules.add(ecrule);
 
         //加载配置的熔断策略
