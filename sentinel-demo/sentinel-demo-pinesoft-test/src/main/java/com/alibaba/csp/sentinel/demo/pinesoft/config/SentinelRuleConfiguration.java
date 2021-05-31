@@ -12,8 +12,11 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-//使用Configuration 存在问题，暂未找到原因
-@Component
+
+/**
+ * @author YS
+ */
+@Component//使用Configuration 存在问题，暂未找到原因
 public class SentinelRuleConfiguration {
 
     @PostConstruct
@@ -78,16 +81,16 @@ public class SentinelRuleConfiguration {
 
     /**
      * 熔断降级规则 (DegradeRule)
-
+     * <p>
      * 1：慢调用比例 (SLOW_REQUEST_RATIO)：选择以慢调用比例作为阈值，需要设置允许的慢调用 RT（即最大的响应时间），
      * 请求的响应时间大于该值则统计为慢调用。当单位统计时长（statIntervalMs）内请求数目大于设置的最小请求数目，
      * 并且慢调用的比例大于阈值，则接下来的熔断时长内请求会自动被熔断。 经过熔断时长后熔断器会进入探测恢复状态（HALF-OPEN 状态），
      * 若接下来的一个请求响应时间小于设置的慢调用 RT 则结束熔断，若大于设置的慢调用 RT 则会再次被熔断。
-
+     * <p>
      * 2：异常比例 (ERROR_RATIO)：当单位统计时长（statIntervalMs）内请求数目大于设置的最小请求数目，
      * 并且异常的比例大于阈值，则接下来的熔断时长内请求会自动被熔断。经过熔断时长后熔断器会进入探测恢复状态（HALF-OPEN 状态），
      * 若接下来的一个请求成功完成（没有错误）则结束熔断，否则会再次被熔断。异常比率的阈值范围是 [0.0, 1.0]，代表 0% - 100%。
-
+     * <p>
      * 3：异常数 (ERROR_COUNT)：当单位统计时长内的异常数目超过阈值之后会自动进行熔断。
      * 经过熔断时长后熔断器会进入探测恢复状态（HALF-OPEN 状态），若接下来的一个请求成功完成（没有错误）则结束熔断，否则会再次被熔断。
      * 注意异常降级仅针对业务异常，对 Sentinel 限流降级本身的异常（BlockException）不生效。
@@ -124,7 +127,7 @@ public class SentinelRuleConfiguration {
         ecrule.setCount(2);   //异常数阈值
         ecrule.setTimeWindow(5);  //熔断时长，单位为 s
         ecrule.setMinRequestAmount(1); //熔断触发的最小请求数
-        ecrule.setRtSlowRequestAmount(1000*60); //单位统计时长
+        ecrule.setRtSlowRequestAmount(1000 * 60); //单位统计时长
         rules.add(ecrule);
 
         //加载配置的熔断策略

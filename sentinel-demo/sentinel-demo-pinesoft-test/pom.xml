@@ -47,9 +47,17 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+
+        <!--sentinel-starter依赖-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
+
+        <!--&lt;!&ndash;nacos持久化依赖&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba.csp</groupId>-->
+            <!--<artifactId>sentinel-datasource-nacos</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 </project>

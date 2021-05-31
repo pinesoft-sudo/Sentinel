@@ -16,8 +16,10 @@
 package com.alibaba.csp.sentinel.demo.pinesoft.common;
 
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowException;
+import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowException;
 import com.alibaba.csp.sentinel.slots.system.SystemBlockException;
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,14 +54,11 @@ public class ExceptionCustomHandler {
             log.warn("BlockException，接口被降级");
         } else if (ex instanceof SystemBlockException) {
             log.warn("BlockException ，系统保护");
-        }
-//      else  if(ex instanceof AuthorityException){
-//            return "BlockException，鉴权保护";
-//        }
-//       else if(ex instanceof ParamFlowException){
-//            return "BlockException，热点方式";
-//        }
-        else {
+        } else if (ex instanceof AuthorityException) {
+            log.warn("BlockException，认证保护");
+        } else if (ex instanceof ParamFlowException) {
+            log.warn("BlockException，热点方式");
+        } else {
             log.error("BlockException，未确定类型");
         }
     }
