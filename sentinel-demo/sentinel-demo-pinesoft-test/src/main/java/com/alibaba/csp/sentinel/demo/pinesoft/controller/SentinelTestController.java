@@ -51,7 +51,7 @@ public class SentinelTestController {
         for (int i = 1; i <= 30; i++) {
             log.info("SentinelResource test2 requestIndex:{}", i);
 
-            if (i % 2 == 0) {
+            if (i % 5 == 0) {
                 testService.SentinelResource2(null);
             } else {
                 testService.SentinelResource2(value);

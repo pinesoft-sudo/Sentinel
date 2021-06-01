@@ -23,13 +23,13 @@ public class SentinelRuleConfiguration {
     @PostConstruct
     public void init() {
         //限流规则
-        initFlowRule("test1");
+//        initFlowRule("test1");
 
         //熔断降级规则
         //initDegradeRule("test2");
 
         //熔断降级规则
-        initDegradeRule("test3");
+//        initDegradeRule("test3");
 
 
         //熔断降级规则

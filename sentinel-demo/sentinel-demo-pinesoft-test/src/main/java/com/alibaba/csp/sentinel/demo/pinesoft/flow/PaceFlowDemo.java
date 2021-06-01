@@ -119,8 +119,8 @@ public class PaceFlowDemo {
 
         System.out.println();
         System.out.println("default behavior");
-        TimeUnit.SECONDS.sleep(5);
         done.set(0);
+        TimeUnit.SECONDS.sleep(5);
         pass.set(0);
         block.set(0);
         countDown = new CountDownLatch(1);

@@ -1,0 +1,33 @@
+server:
+  port: 19967
+
+spring:
+  application:
+    name: sentinel-pinesoft-example
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8086
+      # sentinel nacos
+      datasource:
+        ds-flow:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-flow-rules
+            groupId: DEFAULT_GROUP
+            dataType: json
+            rule-type: flow
+        ds-param:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-param-rules
+            groupId: DEFAULT_GROUP
+            dataType: json
+            rule-type: param-flow
+        ds-degrade:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-degrade-rules
+            groupId: DEFAULT_GROUP
+            dataType: json
+            rule-type: degrade

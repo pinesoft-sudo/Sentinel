@@ -2,7 +2,7 @@ spring.application.name=sentinel-pinesoft-example
 server.port=19967
 
 #引用spring-cloud
-spring.cloud.sentinel.transport.dashboard=localhost:8085
+spring.cloud.sentinel.transport.dashboard=localhost:8086
 #用于和dashboard交互的端口，默认8719
 #spring.cloud.sentinel.transport.port=8719
 

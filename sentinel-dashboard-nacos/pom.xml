@@ -160,7 +160,7 @@
                 <version>${spring.boot.version}</version>
                 <configuration>
                     <fork>true</fork>
-                    <mainClass>com.alibaba.csp.sentinel.dashboard.DashboardApplication</mainClass>
+                    <mainClass>com.alibaba.csp.sentinel.dashboard.DashboardNacosApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

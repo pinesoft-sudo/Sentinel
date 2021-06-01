@@ -15,20 +15,10 @@
  */
 package com.alibaba.csp.sentinel.dashboard;
 
-import com.alibaba.csp.sentinel.datasource.ReadableDataSource;
-import com.alibaba.csp.sentinel.datasource.nacos.NacosDataSource;
 import com.alibaba.csp.sentinel.init.InitExecutor;
 
-import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
-import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
-import com.alibaba.nacos.api.PropertyKeyConst;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.List;
-import java.util.Properties;
 
 /**
  * Sentinel dashboard application.
@@ -36,12 +26,12 @@ import java.util.Properties;
  * @author Carpenter Lee
  */
 @SpringBootApplication
-public class DashboardApplication {
+public class DashboardNacosApplication {
 
     public static void main(String[] args) {
         // -Dserver.port=8888 -Dnacos.serverAddr=localhost:8848 -Dnacos.namespace=f180eb0c-0ddf-453c-985f-3258e69d12a6
         triggerSentinelInit();
-        SpringApplication.run(DashboardApplication.class, args);
+        SpringApplication.run(DashboardNacosApplication.class, args);
     }
 
     private static void triggerSentinelInit() {

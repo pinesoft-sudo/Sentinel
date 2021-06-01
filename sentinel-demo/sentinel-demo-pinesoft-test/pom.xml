@@ -55,9 +55,9 @@
         </dependency>
 
         <!--&lt;!&ndash;nacos持久化依赖&ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba.csp</groupId>-->
-            <!--<artifactId>sentinel-datasource-nacos</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
     </dependencies>
 </project>
