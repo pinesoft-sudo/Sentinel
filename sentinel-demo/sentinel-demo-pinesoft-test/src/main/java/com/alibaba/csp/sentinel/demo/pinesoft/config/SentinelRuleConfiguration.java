@@ -6,6 +6,7 @@ import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRuleManager;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
+import com.alibaba.csp.sentinel.slots.system.SystemRule;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -99,7 +100,6 @@ public class SentinelRuleConfiguration {
     private static void initDegradeRule(String resourceName) {
 
         List<DegradeRule> rules = new ArrayList<>();
-
 
         //配置策略1：慢调用比例
 //        DegradeRule srule = new DegradeRule(resourceName);

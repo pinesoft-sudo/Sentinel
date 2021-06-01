@@ -41,7 +41,7 @@ public class FlowThreadDemo {
     private static volatile boolean stop = false;
     private static final int threadCount = 100;
 
-    private static int seconds = 60 + 40;
+    private static int seconds = 60;
     private static volatile int methodBRunningTime = 2000;
 
     public static void main(String[] args) throws Exception {
@@ -52,29 +52,26 @@ public class FlowThreadDemo {
         initFlowRule();
 
         for (int i = 0; i < threadCount; i++) {
-            Thread entryThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (true) {
-                        Entry methodA = null;
-                        try {
-                            TimeUnit.MILLISECONDS.sleep(5);
-                            methodA = SphU.entry("methodA");
-                            activeThread.incrementAndGet();
-                            Entry methodB = SphU.entry("methodB");
-                            TimeUnit.MILLISECONDS.sleep(methodBRunningTime);
-                            methodB.exit();
-                            pass.addAndGet(1);
-                        } catch (BlockException e1) {
-                            block.incrementAndGet();
-                        } catch (Exception e2) {
-                            // biz exception
-                        } finally {
-                            total.incrementAndGet();
-                            if (methodA != null) {
-                                methodA.exit();
-                                activeThread.decrementAndGet();
-                            }
+            Thread entryThread = new Thread(() -> {
+                while (true) {
+                    Entry methodA = null;
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(5);
+                        methodA = SphU.entry("methodA");
+                        activeThread.incrementAndGet();
+                        Entry methodB = SphU.entry("methodB");
+                        TimeUnit.MILLISECONDS.sleep(methodBRunningTime);
+                        methodB.exit();
+                        pass.addAndGet(1);
+                    } catch (BlockException e1) {
+                        block.incrementAndGet();
+                    } catch (Exception e2) {
+                        // biz exception
+                    } finally {
+                        total.incrementAndGet();
+                        if (methodA != null) {
+                            methodA.exit();
+                            activeThread.decrementAndGet();
                         }
                     }
                 }

@@ -15,6 +15,7 @@
  */
 package com.alibaba.csp.sentinel.demo.pinesoft.common;
 
+import com.alibaba.csp.sentinel.Tracer;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
@@ -49,15 +50,16 @@ public class ExceptionCustomHandler {
      */
     public static void blockHandlerMethod(Integer value, BlockException ex) {
         if (ex instanceof FlowException) {
-            log.warn("BlockException，接口被限流");
+            log.warn("BlockException，限流保护");
+            //Tracer.trace(ex);
         } else if (ex instanceof DegradeException) {
-            log.warn("BlockException，接口被降级");
+            log.warn("BlockException，降级保护");
         } else if (ex instanceof SystemBlockException) {
             log.warn("BlockException ，系统保护");
         } else if (ex instanceof AuthorityException) {
-            log.warn("BlockException，认证保护");
+            log.warn(" BlockException，授权保护");
         } else if (ex instanceof ParamFlowException) {
-            log.warn("BlockException，热点方式");
+            log.warn("BlockException ，热点参数保护");
         } else {
             log.error("BlockException，未确定类型");
         }
